@@ -13,14 +13,15 @@ const CreateYourOwnButton = withStyles({
     width: `calc(50% - ${measures.unit(1)}px)`
   }
 })(
-  withRouter(({ classes, history }) => {
+  withRouter(function CreateYourOwnButton({ classes, history }) {
     const handleCreateClick = useCallback(() => {
       history.push(`/details/custom`);
     });
     return (
       <Cell
         className={classes.root}
-        component="button"
+        component="div"
+        role="button"
         onClick={handleCreateClick}
         title="Monte seu sanduíche"
         subtitle="Escolha seus ingredientes preferidos"
@@ -34,25 +35,32 @@ const CreateYourOwnButton = withStyles({
 const UnorderedList = withStyles({
   root: {
     listStyleType: "none",
-    margin: "auto",
     padding: measures.unit(1),
-    maxWidth: "960px",
     display: "flex",
     flexFlow: "row wrap"
   }
-})(({ classes, ...props }) => {
+})(function UnorderedList({ classes, ...props }) {
   return <ul className={classes.root} {...props} />;
+});
+
+const Container = withStyles({
+  root: {
+    margin: "auto",
+    maxWidth: "960px"
+  }
+})(function Container({ classes, ...props }) {
+  return <div className={classes.root} {...props} />;
 });
 
 export default function ChooseItem() {
   return (
-    <React.Fragment>
+    <Container>
       <UnorderedList>
         {burgersStore.burgers.map(burger => (
           <Burger key={burger.id} {...burger} />
         ))}
       </UnorderedList>
       <CreateYourOwnButton />
-    </React.Fragment>
+    </Container>
   );
 }

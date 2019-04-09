@@ -10,7 +10,7 @@ const Cell = withStyles({
   root: {
     width: "calc(50%)"
   }
-})(({ classes, className, component, ...props }) => {
+})(function Cell({ classes, className, component, ...props }) {
   return React.createElement(component || "li", {
     className: classnames(classes.root, className),
     ...props
@@ -20,8 +20,7 @@ const Cell = withStyles({
 const Container = withStyles({
   root: {
     margin: measures.unit(1),
-    minHeight: "125px",
-    height: "calc(100% - 20px)",
+    height: "125px",
     borderRadius: measures.borderRadius,
     boxShadow: `0 0 0 1px ${color.alto}`,
     display: "flex",
@@ -31,8 +30,8 @@ const Container = withStyles({
       cursor: "pointer"
     }
   }
-})(({ classes, ...props }) => {
-  return <div className={classes.root} {...props} />;
+})(function Container({ classes, ...props }) {
+  return <div role="button" className={classes.root} {...props} />;
 });
 
 const Image = withStyles({
@@ -45,7 +44,7 @@ const Image = withStyles({
     backgroundPosition: props => props.asset.backgroundPosition,
     backgroundSize: props => props.asset.backgroundSize
   }
-})(({ classes, src, alt, ...props }) => {
+})(function Image({ classes, src, alt, ...props }) {
   return <div className={classes.root} alt={alt} {...props} />;
 });
 
@@ -54,7 +53,9 @@ const Content = withStyles({
     flex: 1,
     padding: measures.unit(1)
   }
-})(({ classes, ...props }) => <div className={classes.root} {...props} />);
+})(function Content({ classes, ...props }) {
+  return <div className={classes.root} {...props} />;
+});
 
 const Ingredients = withStyles({
   root: {
@@ -64,16 +65,18 @@ const Ingredients = withStyles({
     WebkitBoxOrient: "vertical",
     overflow: "hidden"
   }
-})(({ classes, ...props }) => (
-  <Typography
-    className={classes.root}
-    title={props.children}
-    component="span"
-    variant="body2"
-    color="textSecondary"
-    {...props}
-  />
-));
+})(function Ingredients({ classes, ...props }) {
+  return (
+    <Typography
+      className={classes.root}
+      title={props.children}
+      component="span"
+      variant="body2"
+      color="textSecondary"
+      {...props}
+    />
+  );
+});
 
 export default withRouter(function Burger({
   imgAsset,

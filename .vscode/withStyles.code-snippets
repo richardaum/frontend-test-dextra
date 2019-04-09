@@ -1,0 +1,15 @@
+{
+	"withStyles": {
+		"prefix": "withStyles",
+		"body": [
+			"const $1 = withStyles({",
+			"  root: {",
+			"    $2",
+			"  }",
+			"})(function $1({ classes, ...props}) {",
+			"  return <div className={classes.root} {...props} />;",
+			"});"
+		],
+		"description": "withStyles"
+	}
+}
