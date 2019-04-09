@@ -8,7 +8,8 @@ import measures from "../../../infrastructure/theme/measures";
 
 const Cell = withStyles({
   root: {
-    width: "calc(50%)"
+    width: `calc(50% - ${measures.unit(1)}px)`,
+    margin: `${measures.unit(1)}px 0`
   }
 })(function Cell({ classes, className, component, ...props }) {
   return React.createElement(component || "li", {
@@ -19,7 +20,6 @@ const Cell = withStyles({
 
 const Container = withStyles({
   root: {
-    margin: measures.unit(1),
     height: "125px",
     borderRadius: measures.borderRadius,
     boxShadow: `0 0 0 1px ${color.alto}`,
@@ -51,7 +51,9 @@ const Image = withStyles({
 const Content = withStyles({
   root: {
     flex: 1,
-    padding: measures.unit(1)
+    padding: measures.unit(2),
+    display: "flex",
+    flexFlow: "column nowrap"
   }
 })(function Content({ classes, ...props }) {
   return <div className={classes.root} {...props} />;
@@ -71,8 +73,22 @@ const Ingredients = withStyles({
       className={classes.root}
       title={props.children}
       component="span"
-      variant="body2"
+      variant="caption"
       color="textSecondary"
+      {...props}
+    />
+  );
+});
+
+const Note = withStyles({
+  root: { marginTop: "auto" }
+})(function Note({ classes, ...props }) {
+  return (
+    <Typography
+      variant="body1"
+      noWrap
+      title={props.children}
+      className={classes.root}
       {...props}
     />
   );
@@ -83,6 +99,7 @@ export default withRouter(function Burger({
   imgAlt,
   title = "",
   subtitle = "",
+  note = "",
   onClick,
   className,
   styles,
@@ -96,6 +113,7 @@ export default withRouter(function Burger({
             {title.toUpperCase()}
           </Typography>
           <Ingredients>{subtitle}</Ingredients>
+          {note && <Note>{note}</Note>}
         </Content>
         {imgAsset && <Image asset={imgAsset} alt={imgAlt} />}
       </Container>
