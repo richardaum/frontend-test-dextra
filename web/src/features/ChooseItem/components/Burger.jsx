@@ -2,21 +2,28 @@ import React, { useCallback } from "react";
 import { withRouter } from "react-router-dom";
 import assets from "../assets";
 import getIngredients from "./getIngredients";
-import Cell from "./Cell";
 import getPrice from "./getPrice";
+import {
+  CardItem,
+  CardItemContent,
+  CardItemTitle,
+  CardItemSubtitle,
+  CardItemNote,
+  CardItemImage
+} from "../../../infrastructure/components/CardItem";
 
 export default withRouter(function Burger({ history, id, name, ingredients }) {
   const handleClick = useCallback(() => {
-    history.push(`/details/${id}`);
+    history.push(`/details/${id}`, { id });
   });
   return (
-    <Cell
-      title={name}
-      subtitle={getIngredients(ingredients)}
-      note={getPrice(ingredients)}
-      imgAsset={assets[id]}
-      imgAlt="burger"
-      onClick={handleClick}
-    />
+    <CardItem role="button" onClick={handleClick}>
+      <CardItemContent>
+        <CardItemTitle>{name}</CardItemTitle>
+        <CardItemSubtitle>{getIngredients(ingredients)}</CardItemSubtitle>
+        <CardItemNote>{getPrice(ingredients)}</CardItemNote>
+      </CardItemContent>
+      <CardItemImage asset={assets[id]} />
+    </CardItem>
   );
 });

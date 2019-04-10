@@ -1,12 +1,19 @@
 import React, { useCallback } from "react";
+import classnames from "classnames";
 import { withRouter } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Typography } from "@material-ui/core";
 import burgersStore from "../../../infrastructure/stores/burgersStore";
 import Burger from "./Burger";
-import Cell from "./Cell";
 import assets from "../assets";
 import measures from "../../../infrastructure/theme/measures";
+import Title from "../../../infrastructure/components/Title";
+import {
+  CardItem,
+  CardItemContent,
+  CardItemTitle,
+  CardItemSubtitle,
+  CardItemImage
+} from "../../../infrastructure/components/CardItem";
 
 const CreateYourOwnButton = withStyles({
   root: {
@@ -18,16 +25,19 @@ const CreateYourOwnButton = withStyles({
       history.push(`/details/custom`);
     });
     return (
-      <Cell
+      <CardItem
+        component="button"
         className={classes.root}
-        component="div"
-        role="button"
         onClick={handleCreateClick}
-        title="Monte seu sanduíche"
-        subtitle="Use a criatividade e escolha seus ingredientes preferidos"
-        imgAsset={assets.custom}
-        imgAlt="Create your own burger"
-      />
+      >
+        <CardItemContent>
+          <CardItemTitle>Monte seu sanduíche</CardItemTitle>
+          <CardItemSubtitle>
+            Use a criatividade e escolha seus ingredientes preferidos
+          </CardItemSubtitle>
+        </CardItemContent>
+        <CardItemImage asset={assets.custom} />
+      </CardItem>
     );
   })
 );
@@ -45,20 +55,14 @@ const UnorderedList = withStyles({
   return <ul className={classes.root} {...props} />;
 });
 
-const Container = withStyles({
+export const Container = withStyles({
   root: {
-    margin: "auto",
-    padding: measures.unit(1),
+    margin: "0 auto",
+    padding: measures.unit(3),
     maxWidth: "960px"
   }
-})(function Container({ classes, ...props }) {
-  return <div className={classes.root} {...props} />;
-});
-
-const Title = withStyles({
-  root: { fontSize: "1.5rem" }
-})(function Title({ classes, ...props }) {
-  return <Typography className={classes.root} variant="h2" {...props} />;
+})(function Container({ classes, className, ...props }) {
+  return <div className={classnames(classes.root, className)} {...props} />;
 });
 
 export default function Picker() {

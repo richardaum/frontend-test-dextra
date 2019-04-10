@@ -4,7 +4,10 @@ import Picker from "./Picker";
 import Cart from "./Cart";
 
 const Container = withStyles({
-  root: {}
+  root: {
+    height: "100%",
+    display: "flex"
+  }
 })(function Container({ classes, ...props }) {
   return <div className={classes.root} {...props} />;
 });
