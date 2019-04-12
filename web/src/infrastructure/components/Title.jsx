@@ -4,8 +4,10 @@ import { Typography } from "@material-ui/core";
 
 const Title = withStyles({
   root: {
+    height: "36px",
     fontSize: "1.5rem",
-    height: "30px"
+    display: "flex",
+    alignItems: "center"
   }
 })(function Title({ classes, ...props }) {
   return <Typography className={classes.root} variant="h2" {...props} />;

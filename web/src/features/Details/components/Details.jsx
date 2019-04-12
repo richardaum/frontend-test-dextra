@@ -2,7 +2,8 @@ import React, { useCallback } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withRouter } from "react-router-dom";
 import { Observer } from "mobx-react";
-import { Typography } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import indigo from "@material-ui/core/colors/indigo";
 import BackButton from "../../../infrastructure/components/BackButton";
 import ingredientsStore from "../../../infrastructure/stores/ingredientsStore";
@@ -87,13 +88,20 @@ const Ingredient = withStyles({
   );
 });
 
-export default withStyles({ container: { width: "100%" } })(
-  withRouter(function Details({ classes, location }) {
+export default withStyles({
+  container: { width: "100%" },
+  addButton: { marginLeft: "auto" }
+})(
+  withRouter(function Details({ classes, history, location }) {
     const burgerId = location.state.id;
     const burger = burgersStore.burgers.find(b => b.id === burgerId);
     const allIngredients = ingredientsStore.getIngredientsListOrderedByLeft(
       burger.ingredients
     );
+
+    const handleClick = useCallback(() => {
+      history.goBack();
+    });
 
     return (
       <Wrapper>
@@ -102,6 +110,15 @@ export default withStyles({ container: { width: "100%" } })(
             <BackButton>Sanduíches</BackButton>
             <span> ~ </span>
             {burger.name}
+
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.addButton}
+              onClick={handleClick}
+            >
+              Adicionar
+            </Button>
           </Title>
 
           <Body>
