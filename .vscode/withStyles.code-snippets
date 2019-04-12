@@ -6,8 +6,8 @@
 			"  root: {",
 			"    $2",
 			"  }",
-			"})(function $1({ classes, ...props}) {",
-			"  return <div className={classes.root} {...props} />;",
+			"})(function $1({ classes, className, ...props }) {",
+			"  return <div className={classnames(classes.root, className)} {...props}>$3</div>;",
 			"});"
 		],
 		"description": "withStyles"

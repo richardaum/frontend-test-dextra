@@ -1,5 +1,6 @@
 import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
+import classnames from "classnames";
 import measures from "../../theme/measures";
 
 export default withStyles({
@@ -9,6 +10,6 @@ export default withStyles({
     display: "flex",
     flexFlow: "column nowrap"
   }
-})(function CardItemContent({ classes, ...props }) {
-  return <div className={classes.root} {...props} />;
+})(function CardItemContent({ classes, className, ...props }) {
+  return <div className={classnames(classes.root, className)} {...props} />;
 });
