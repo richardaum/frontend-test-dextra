@@ -14,6 +14,7 @@ import {
   CardItemSubtitle,
   CardItemImage
 } from "../../../infrastructure/components/CardItem";
+import detailsStore from "../../../infrastructure/stores/detailsStore";
 
 const CreateYourOwnButton = withStyles({
   root: {
@@ -22,7 +23,10 @@ const CreateYourOwnButton = withStyles({
 })(
   withRouter(function CreateYourOwnButton({ classes, history }) {
     const handleCreateClick = useCallback(() => {
-      history.push(`/details/custom`);
+      detailsStore.setSelectedBurgerId("custom");
+      detailsStore.incrementIngredientsQuantity([]);
+
+      history.push(`/details/custom`, { id: "custom" });
     });
     return (
       <CardItem
@@ -70,9 +74,9 @@ export default function Picker() {
     <Container>
       <Title>Sanduíches</Title>
       <UnorderedList>
-        {burgersStore.burgers.map(burger => (
-          <Burger key={burger.id} {...burger} />
-        ))}
+        {burgersStore.burgers.map(burger =>
+          burger.hidden ? null : <Burger key={burger.id} {...burger} />
+        )}
       </UnorderedList>
       <CreateYourOwnButton />
     </Container>

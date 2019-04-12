@@ -91,7 +91,6 @@ export default withStyles({ container: { width: "100%" } })(
   withRouter(function Details({ classes, location }) {
     const burgerId = location.state.id;
     const burger = burgersStore.burgers.find(b => b.id === burgerId);
-
     const allIngredients = ingredientsStore.getIngredientsListOrderedByLeft(
       burger.ingredients
     );

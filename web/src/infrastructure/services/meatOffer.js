@@ -9,7 +9,8 @@ const BASE_PAID_QUANTITY = 2;
 export default function hasMeatOffer(quantity) {
   const ingredient = ingredientsStore.getIngredient("hamburguer-de-carne");
   const offerQuantity = Math.floor(quantity / BASE_CHOSEN_QUANTITY);
-  const paidQuantity = offerQuantity * BASE_PAID_QUANTITY;
+  const paidQuantity =
+    offerQuantity * BASE_PAID_QUANTITY + (quantity % BASE_CHOSEN_QUANTITY);
   const discount = offerQuantity * ingredient.price;
 
   return offerQuantity > 0

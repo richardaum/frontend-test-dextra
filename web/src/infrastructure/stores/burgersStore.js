@@ -1,11 +1,17 @@
 import { action, observable } from "mobx";
 
+const customBurger = {
+  id: "custom",
+  name: "Monte seu sanduíche",
+  hidden: true,
+  ingredients: []
+};
 class BurgersStore {
   @observable burgers = [];
 
   @action
   setBurgers(burgers) {
-    this.burgers = burgers;
+    this.burgers = [...burgers, customBurger];
   }
 }
 
