@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Typography } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import { formatPrice } from "../../ChooseItem/components/getPrice";
 import measures from "../../../infrastructure/theme/measures";
 

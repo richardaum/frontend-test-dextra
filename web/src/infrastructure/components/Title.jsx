@@ -1,6 +1,6 @@
 import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Typography } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 const Title = withStyles({
   root: {

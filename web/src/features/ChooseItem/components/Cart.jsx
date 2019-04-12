@@ -1,6 +1,6 @@
 import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Typography } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import { ReactComponent as Empty } from "../assets/empty.svg";
 import measures from "../../../infrastructure/theme/measures";
 import Panel from "../../../infrastructure/components/Panel";
