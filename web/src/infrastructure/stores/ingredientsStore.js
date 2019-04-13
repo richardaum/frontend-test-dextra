@@ -3,7 +3,7 @@ import uniqBy from "lodash/uniqBy";
 
 const ingredientsCache = {};
 
-class IngredientsStore {
+export class IngredientsStore {
   @observable ingredients = [];
 
   getIngredient(id) {

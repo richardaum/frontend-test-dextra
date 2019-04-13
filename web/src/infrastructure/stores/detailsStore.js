@@ -5,7 +5,7 @@ import hasLightOffer, { LIGHT_OFFER } from "../services/lightOffer";
 import hasMeatOffer, { MEAT_OFFER } from "../services/meatOffer";
 import hasCheeseOffer, { CHEESE_OFFER } from "../services/cheeseOffer";
 
-class DetailsStore {
+export class DetailsStore {
   @observable selectedBurgerId = null;
 
   @observable ingredientsQuantity = new Map();

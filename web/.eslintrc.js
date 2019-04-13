@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true
+    es6: true,
+    jest: true
   },
   parser: 'babel-eslint',
   extends: ['airbnb', 'prettier'],
@@ -20,5 +21,6 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error'],
     'react/prop-types': 0,
+    'no-underscore-dangle': ["error", { "allow": ["__get__", "__set__"] }],
   },
 };

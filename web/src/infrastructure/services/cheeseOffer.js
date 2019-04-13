@@ -8,6 +8,9 @@ const BASE_PAID_QUANTITY = 2;
 
 export default function hasCheeseOffer(quantity) {
   const ingredient = ingredientsStore.getIngredient("queijo");
+
+  if (!ingredient) return null;
+
   const offerQuantity = Math.floor(quantity / BASE_CHOSEN_QUANTITY);
   const discount = offerQuantity * ingredient.price;
   const paidQuantity =
