@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/richardaum/frontend-test-dextra.svg?branch=master)](https://travis-ci.org/richardaum/frontend-test-dextra)
+[![Coverage Status](https://coveralls.io/repos/github/richardaum/frontend-test-dextra/badge.svg?branch=master)](https://coveralls.io/github/richardaum/frontend-test-dextra?branch=master)
 
 # Front-end test for Dextra
 
