@@ -82,8 +82,8 @@
       "^.+\\.module\\.(css|sass|scss)$"
     ],
     "watchPlugins": [
-      "/home/richardaum/projects/frontend-test-dextra/web/node_modules/jest-watch-typeahead/filename.js",
-      "/home/richardaum/projects/frontend-test-dextra/web/node_modules/jest-watch-typeahead/testname.js"
+      "<rootDir>/node_modules/jest-watch-typeahead/filename.js",
+      "<rootDir>/node_modules/jest-watch-typeahead/testname.js"
     ]
   },
   "dependencies": {
@@ -129,7 +129,7 @@
     "html-webpack-plugin": "4.0.0-alpha.2",
     "husky": "^1.3.1",
     "identity-obj-proxy": "3.0.0",
-    "jest": "23.6.0",
+    "jest": "24.7.1",
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",

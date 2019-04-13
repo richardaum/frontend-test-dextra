@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "./scripts/install.sh",
     "start": "./scripts/start.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./scripts/test.sh"
   },
   "repository": {
     "type": "git",
