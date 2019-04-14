@@ -1,10 +1,7 @@
 import React, { useCallback } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { withRouter } from "react-router-dom";
-import { Observer } from "mobx-react";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import indigo from "@material-ui/core/colors/indigo";
 import BackButton from "../../../infrastructure/components/BackButton";
 import ingredientsStore from "../../../infrastructure/stores/ingredientsStore";
 import burgersStore from "../../../infrastructure/stores/burgersStore";
@@ -22,6 +19,7 @@ import {
 import { formatPrice } from "../../ChooseItem/components/getPrice";
 import detailsStore from "../../../infrastructure/stores/detailsStore";
 import Summary from "./Summary";
+import ConnectedQuantity from "./Quantity";
 
 const Wrapper = withStyles({
   root: { display: "flex" }
@@ -43,29 +41,6 @@ const Body = withStyles({
   return <div className={classes.root} {...props} />;
 });
 
-const Quantity = withStyles({
-  root: {
-    background: indigo[500],
-    color: "white",
-    borderRadius: "4px",
-    padding: `0 ${measures.unit(1)}px`,
-    marginRight: measures.unit(1)
-  }
-})(function Quantity({ classes, ingredient, ...props }) {
-  return (
-    <Observer>
-      {() => {
-        const quantity = detailsStore.getQuantity(ingredient.id);
-        return quantity ? (
-          <Typography component="span" className={classes.root} {...props}>
-            {quantity}
-          </Typography>
-        ) : null;
-      }}
-    </Observer>
-  );
-});
-
 const Ingredient = withStyles({
   flex: { display: "flex" },
   content: { minWidth: 0 }
@@ -78,7 +53,7 @@ const Ingredient = withStyles({
     <CardItem component="button" onClick={handleClick} {...props}>
       <CardItemContent className={classes.content}>
         <div className={classes.flex}>
-          <Quantity ingredient={ingredient} />
+          <ConnectedQuantity ingredient={ingredient} />
           <CardItemTitle>{ingredient.name}</CardItemTitle>
         </div>
         <CardItemNote>{formatPrice(ingredient.price)}</CardItemNote>

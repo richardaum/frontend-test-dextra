@@ -6,7 +6,7 @@ const customBurger = {
   hidden: true,
   ingredients: []
 };
-class BurgersStore {
+export class BurgersStore {
   @observable burgers = [];
 
   @action

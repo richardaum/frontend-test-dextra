@@ -1,12 +1,16 @@
 import { IngredientsStore } from "../ingredientsStore";
 
-const ingredientsStore = new IngredientsStore();
-ingredientsStore.setIngredients([
-  { id: "alface", name: "Alface", price: 0.4 },
-  { id: "bacon", name: "Bacon", price: 2 },
-  { id: "hamburguer-de-carne", name: "Hambúrguer de carne", price: 3 },
-  { id: "ovo", name: "Ovo", price: 0.8 },
-  { id: "queijo", name: "Queijo", price: 1.5 }
-]);
+export const alface = { id: "alface", name: "Alface", price: 0.4 };
+export const bacon = { id: "bacon", name: "Bacon", price: 2 };
+export const carne = {
+  id: "hamburguer-de-carne",
+  name: "Hambúrguer de carne",
+  price: 3
+};
+export const ovo = { id: "ovo", name: "Ovo", price: 0.8 };
+export const queijo = { id: "queijo", name: "Queijo", price: 1.5 };
 
-export default ingredientsStore;
+const ingredientsStoreMock = new IngredientsStore();
+ingredientsStoreMock.setIngredients([alface, bacon, carne, ovo, queijo]);
+
+export default ingredientsStoreMock;

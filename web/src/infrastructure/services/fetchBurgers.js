@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import Axios from "axios";
 
 export default () => {

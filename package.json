@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "./scripts/install.sh",
     "start": "./scripts/start.sh",
-    "test": "./scripts/test.sh"
+    "test": "./scripts/test.sh",
+    "tdd": "./scripts/tdd.sh"
   },
   "repository": {
     "type": "git",
